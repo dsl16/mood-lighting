@@ -152,16 +152,18 @@ GPIO Pin ── 220Ω Resistor ── LED Anode ── LED Cathode ── GND
 
 ## Procurement Status
 
-- **Ordering**: Ready to order from Amazon with 2-3 day delivery
-- **Payment**: Within $50 budget with $2 buffer for tax/shipping
-- **Timeline**: Hardware arrives before software development completes
+- **Status**: ✅ **ORDERED** (July 19, 2025)
+- **Delivery**: 2-3 days via Amazon Prime
+- **Budget**: $48 total (within $50 target)
+- **Timeline**: Hardware arriving while software development continues
 
 ## Next Steps
 
-1. **Order Components**: Use provided Amazon links
+1. ~~**Order Components**: Use provided Amazon links~~ ✅ **COMPLETED**
 2. **Development Environment**: Set up MicroPython tools while waiting for delivery
-3. **API Testing**: Validate LIFX integration from computer first
-4. **Physical Setup**: Breadboard wiring when components arrive
+3. ~~**API Testing**: Validate LIFX integration from computer first~~ ✅ **COMPLETED**
+4. **Write main.py**: Core ESP32 application logic
+5. **Physical Setup**: Breadboard wiring when components arrive (2-3 days)
 
 ## Key Decision Rationale
 
