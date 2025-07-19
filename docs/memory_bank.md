@@ -23,7 +23,14 @@ This memory bank will grow organically as features are implemented, capturing de
 - **Budget**: $48 total, within $50 target
 - **Details**: [Hardware Component Selection](hardware/component_selection.md)
 
+### Development Environment Setup ✅
+- **MicroPython Firmware**: v1.24.1 stable (ESP32_GENERIC) downloaded and ready
+- **Development Tools**: Thonny IDE + esptool.py v4.9.0 in virtual environment
+- **Workflow**: Complete development, flashing, and debugging process prepared
+- **Details**: [Development Environment Setup](software/development_environment_setup.md)
+
 *Additional entries will be added as development progresses:*
+- LIFX API integration and testing results
 - Software architecture choices and implementation patterns
 - Problem-solving approaches and debugging insights
 - Performance optimizations and testing strategies
