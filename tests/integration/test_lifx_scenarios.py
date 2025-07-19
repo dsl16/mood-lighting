@@ -4,11 +4,10 @@ Fun LIFX API Test Script - Colorful Multi-Light Controls
 Demonstrates advanced LIFX functionality with colors and scenes
 """
 
+import pytest
 import sys
 import time
 import random
-sys.path.append('src')
-
 from lighting.lifx_api import LIFXController, LIFXAPIError
 
 class ColorfulLightShow:

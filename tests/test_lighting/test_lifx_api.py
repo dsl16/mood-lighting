@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 """
-Clean desktop test for LIFX API module
-Tests the actual module with conditional imports
+Unit tests for LIFX API module using pytest framework
 """
 
-import sys
+import pytest
 import time
-sys.path.append('src')
-
+from unittest.mock import Mock, patch, MagicMock
 from lighting.lifx_api import LIFXController, toggle_light, get_all_lights, LIFXAPIError
 
 def test_lifx_api():

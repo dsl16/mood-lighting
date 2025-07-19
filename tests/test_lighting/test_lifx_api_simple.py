@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 """
-Test script for LIFX API module
+Simple test script for LIFX API module (original test_lifx_api.py)
 """
 
 import sys
 import time
-sys.path.append('src')
-
 from lighting.lifx_api import LIFXController, toggle_light, get_all_lights, LIFXAPIError
 
 def test_lifx_api():
