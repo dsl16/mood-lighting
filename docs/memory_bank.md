@@ -30,8 +30,13 @@ This memory bank will grow organically as features are implemented, capturing de
 - **Tools**: esptool.py v4.9.0, virtual environment, VS Code workspace configured
 - **Details**: [Development Environment Setup](software/development_environment_setup.md)
 
+### LIFX API Integration and Testing ✅
+- **API Token**: Validated with full read/write permissions for 5 lights
+- **Toggle Functionality**: Confirmed working with 600-800ms response time
+- **Light Discovery**: Kitchen, Living room, Bedroom lamp, moon, Flower Light
+- **Details**: [LIFX API Integration](software/lifx_api_integration.md)
+
 *Additional entries will be added as development progresses:*
-- LIFX API integration and testing results
 - Software architecture choices and implementation patterns
 - Problem-solving approaches and debugging insights
 - Performance optimizations and testing strategies
