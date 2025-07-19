@@ -24,9 +24,10 @@ This memory bank will grow organically as features are implemented, capturing de
 - **Details**: [Hardware Component Selection](hardware/component_selection.md)
 
 ### Development Environment Setup ✅
+- **Primary Workflow**: VS Code + PyMakr extension for seamless ESP32 development
+- **Backup Workflow**: Thonny IDE for complex hardware debugging
 - **MicroPython Firmware**: v1.24.1 stable (ESP32_GENERIC) downloaded and ready
-- **Development Tools**: Thonny IDE + esptool.py v4.9.0 in virtual environment
-- **Workflow**: Complete development, flashing, and debugging process prepared
+- **Tools**: esptool.py v4.9.0, virtual environment, VS Code workspace configured
 - **Details**: [Development Environment Setup](software/development_environment_setup.md)
 
 *Additional entries will be added as development progresses:*

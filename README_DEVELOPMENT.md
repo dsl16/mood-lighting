@@ -10,14 +10,26 @@
 ## Quick Start Commands
 
 ### Activate Development Environment
+
+#### Primary Workflow: VS Code + PyMakr
 ```bash
 # Navigate to project directory
 cd /Users/darrinlim/Documents/mood-lighting
 
-# Activate virtual environment
-source venv/bin/activate
+# Open project in VS Code (will auto-activate virtual environment)
+code .
 
-# Launch Thonny IDE for MicroPython development
+# Install PyMakr extension if not already installed:
+# 1. Open Extensions (⌘+Shift+X)  
+# 2. Search "PyMakr"
+# 3. Install "PyMakr" by Pycom
+# 4. Restart VS Code
+```
+
+#### Backup Workflow: Thonny IDE
+```bash
+# For complex ESP32 debugging when needed
+source venv/bin/activate
 thonny
 ```
 
@@ -49,20 +61,47 @@ screen /dev/tty.usbserial-* 115200
 
 ## Development Workflow
 
-### 1. Code Development
-- **Editor**: Thonny IDE with MicroPython support
+### Primary Workflow: VS Code + PyMakr
+
+#### 1. Code Development
+- **Editor**: VS Code with PyMakr extension  
+- **Features**: Full VS Code functionality (IntelliSense, Git, extensions)
 - **File Structure**: Domain-based organization in src/
-- **Testing**: Serial console + REPL for immediate feedback
+- **Auto-completion**: MicroPython libraries and ESP32-specific modules
 
-### 2. Code Deployment
-- **Method**: Thonny file upload to ESP32 flash memory
-- **Files**: main.py (auto-runs on boot) + modules in src/
-- **Config**: Upload config.json and secrets.py to ESP32
+#### 2. ESP32 Connection & File Management
+```bash
+# PyMakr will automatically detect ESP32 when connected
+# 1. Connect ESP32 via USB
+# 2. Open PyMakr panel in VS Code
+# 3. Click "Connect Device" 
+# 4. Select ESP32 port (usually auto-detected)
+```
 
-### 3. Debugging
-- **Serial Monitor**: Real-time output via USB connection
-- **REPL**: Interactive Python shell on ESP32
+#### 3. Code Deployment
+- **Method**: PyMakr sync - uploads all src/ files to ESP32
+- **Command**: Use PyMakr "Upload" button or Ctrl+Shift+P → "PyMakr: Upload"
+- **Files synced**: All .py files in src/ directory
+- **Config**: Automatic upload of config.json and secrets.py
+
+#### 4. Development & Debugging  
+- **REPL Access**: PyMakr provides integrated REPL in VS Code terminal
+- **Serial Monitor**: Real-time ESP32 output in VS Code
+- **File Management**: Download/upload individual files via PyMakr
 - **Error Handling**: Immediate LED feedback per CLAUDE.md specs
+
+### Backup Workflow: Thonny IDE
+
+#### When to Use Thonny
+- **Firmware flashing issues**: Better hardware-level debugging
+- **Complex device management**: More detailed ESP32 control
+- **PyMakr connection problems**: Alternative communication method
+- **Hardware troubleshooting**: Step-by-step device diagnosis
+
+#### Thonny Workflow
+- **File Management**: Drag-and-drop upload to ESP32
+- **REPL**: Built-in interactive shell
+- **Debugging**: Step-through code execution on ESP32
 
 ## Installed Tools
 

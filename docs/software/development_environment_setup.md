@@ -44,21 +44,34 @@
 
 ### Development IDE Choice
 
-**Decision**: Thonny IDE v4.1.7  
-**Rationale**:
-- **MicroPython-focused**: Built specifically for MicroPython development
-- **Beginner-friendly**: Simple interface, excellent for learning
-- **ESP32 integration**: Direct serial connection and file management
-- **Real-time REPL**: Interactive Python shell on ESP32
-- **File management**: Easy upload/download between computer and ESP32
+**Primary Decision**: VS Code + PyMakr Extension  
+**Backup Decision**: Thonny IDE v4.1.7  
 
-**Development Workflow**:
+**Why VS Code + PyMakr as Primary**:
+- **Developer preference**: User already comfortable with VS Code/Cursor
+- **Full IDE features**: IntelliSense, Git integration, extensions, code formatting
+- **PyMakr extension**: Mature ESP32 support, automatic device detection
+- **Professional workflow**: Maintains existing development muscle memory
+- **File management**: Seamless sync between VS Code and ESP32
+
+**Why Thonny as Backup**:
+- **MicroPython-focused**: Built specifically for MicroPython development
+- **Hardware debugging**: Superior for complex ESP32 troubleshooting
+- **Zero configuration**: Works immediately without setup
+- **Recovery tool**: When PyMakr has connection issues
+
+**Primary Development Workflow**:
 ```
-Code in Thonny → Upload to ESP32 → Test via REPL → Iterate
+Write code in VS Code → PyMakr sync to ESP32 → Test via integrated REPL → Iterate
+```
+
+**Backup Workflow**:
+```
+Complex debugging in Thonny → File management → Hardware troubleshooting
 ```
 
 **Alternative IDEs Considered**:
-- VS Code: More complex setup, requires extensions
+- MicroPico extension: Experimental ESP32 support, primarily for Raspberry Pi Pico
 - PyCharm: Heavyweight, no direct MicroPython support
 - Terminal + editor: Less integrated, harder debugging
 
@@ -83,9 +96,13 @@ Code in Thonny → Upload to ESP32 → Test via REPL → Iterate
 ### Directory Structure Created
 ```
 mood-lighting/
+├── .vscode/                 # VS Code workspace configuration
+│   ├── settings.json        # Python environment, PyMakr settings
+│   └── extensions.json      # Recommended extensions
 ├── venv/                    # Virtual environment (git-ignored)
 ├── firmware/                # MicroPython firmware files
 │   └── esp32-generic-v1.24.1.bin
+├── pymakr.conf              # PyMakr project configuration
 ├── README_DEVELOPMENT.md    # Development setup guide
 └── docs/software/           # Software documentation
     └── development_environment_setup.md
@@ -94,8 +111,28 @@ mood-lighting/
 ### Virtual Environment Contents
 - **Python**: 3.9.6 (system Python in isolated environment)
 - **esptool**: v4.9.0 (ESP32 flashing and communication)
-- **Thonny**: v4.1.7 (MicroPython IDE)
+- **Thonny**: v4.1.7 (backup MicroPython IDE)
 - **Dependencies**: pyserial, cryptography, etc. (auto-installed)
+
+### VS Code Configuration Details
+
+**Workspace Settings** (`.vscode/settings.json`):
+- **Python interpreter**: Auto-points to project virtual environment
+- **PyMakr settings**: ESP32 auto-detection, 115200 baud rate, safe upload
+- **File sync**: Only src/ directory uploaded to ESP32
+- **Code quality**: Black formatting, pylint linting enabled
+- **File exclusions**: Hide venv, firmware, git files from explorer
+
+**Extension Recommendations** (`.vscode/extensions.json`):
+- **PyMakr**: ESP32 communication and file management
+- **Python support**: IntelliSense, debugging, formatting
+- **Auto-install**: VS Code prompts to install recommended extensions
+
+**PyMakr Project Config** (`pymakr.conf`):
+- **Device connection**: Auto-detect ESP32 on /dev/tty.usbserial-*
+- **File synchronization**: Upload .py, .json, .txt files from src/
+- **Ignore patterns**: Exclude development files (.git, venv, docs, etc.)
+- **Safety features**: Safe boot on upload, chunked file transfer
 
 ### Firmware Flash Process (Ready for Hardware)
 ```bash
@@ -111,12 +148,18 @@ esptool.py --port /dev/tty.usbserial-* --baud 460800 write_flash -z 0x1000 firmw
 
 ## Development Workflow Design
 
-### Code Development Cycle
-1. **Edit**: Write Python code in Thonny
-2. **Upload**: Transfer files to ESP32 flash memory
-3. **Test**: Run code via REPL, monitor serial output
-4. **Debug**: Use print statements and LED feedback
-5. **Iterate**: Modify and re-upload quickly
+### Primary Code Development Cycle (VS Code + PyMakr)
+1. **Edit**: Write Python code in VS Code with full IDE features
+2. **Sync**: PyMakr uploads all src/ files to ESP32 automatically  
+3. **Test**: Run code via integrated REPL in VS Code terminal
+4. **Debug**: Monitor serial output and use LED feedback
+5. **Iterate**: Seamless edit-sync-test cycle
+
+### Backup Development Cycle (Thonny)
+1. **Debug**: Complex hardware issues or PyMakr connection problems
+2. **Upload**: Drag-and-drop individual files to ESP32
+3. **Test**: Built-in REPL and detailed device management
+4. **Recover**: Hardware troubleshooting and firmware issues
 
 ### File Organization Strategy
 - **main.py**: Auto-runs on ESP32 boot
@@ -177,14 +220,16 @@ esptool.py --port /dev/tty.usbserial-* write_flash 0x1000 firmware/esp32-generic
 ## Documentation and Knowledge Transfer
 
 ### Development Guide Created
-- **README_DEVELOPMENT.md**: Complete setup and usage instructions
-- **Troubleshooting**: Common issues and solutions documented
+- **README_DEVELOPMENT.md**: Complete setup and usage instructions for both VS Code and Thonny workflows
+- **VS Code configuration**: Workspace settings, extensions, and PyMakr setup documented
+- **Troubleshooting**: Common issues and solutions for both development environments
 - **Commands**: Copy-paste ready for immediate use
-- **Verification**: Step-by-step testing procedures
+- **Verification**: Step-by-step testing procedures for both workflows
 
 ### Memory Bank Integration
-- **Decision context**: Why each tool was chosen
-- **Alternative analysis**: What was considered and rejected
+- **Decision context**: Why VS Code + PyMakr was chosen as primary, Thonny as backup
+- **Alternative analysis**: MicroPico vs PyMakr comparison, other IDE options considered  
+- **Configuration rationale**: Detailed explanation of VS Code workspace settings
 - **Future considerations**: Migration paths and optimization opportunities
 
 ## Next Steps Ready
@@ -196,9 +241,11 @@ esptool.py --port /dev/tty.usbserial-* write_flash 0x1000 firmware/esp32-generic
 4. **Begin coding**: Start with WiFi manager implementation
 
 ### Development Readiness
-- **Tools**: All development tools installed and tested
-- **Documentation**: Complete setup guide for reproducibility
+- **Primary tools**: VS Code + PyMakr extension configured and ready
+- **Backup tools**: Thonny IDE available for complex debugging
+- **Documentation**: Complete setup guide for both workflows
 - **Firmware**: Latest stable version downloaded and verified
-- **Workflow**: Clear development and debugging process established
+- **Configuration**: VS Code workspace optimized for MicroPython ESP32 development
+- **Prerequisites**: Node.js requirement documented for PyMakr installation
 
-This development environment setup provides a solid foundation for rapid Phase 1 prototype development while maintaining professional development practices and easy scalability to Phase 2 multi-button system.
+This development environment setup provides a solid foundation for rapid Phase 1 prototype development while maintaining professional development practices, user workflow preferences, and easy scalability to Phase 2 multi-button system.
