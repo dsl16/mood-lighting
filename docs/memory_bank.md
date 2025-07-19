@@ -36,6 +36,12 @@ This memory bank will grow organically as features are implemented, capturing de
 - **Light Discovery**: Kitchen, Living room, Bedroom lamp, moon, Flower Light
 - **Details**: [LIFX API Integration](software/lifx_api_integration.md)
 
+### WiFi Manager Decision ✅
+- **Solution**: Use micropython-esp-wifi-manager v1.8.0 via PyPI (no custom code needed)
+- **Integration**: 3 lines in main.py, library handles all WiFi complexity
+- **Rationale**: Focus development effort on button logic, not WiFi edge cases
+- **Details**: [WiFi Manager Decision](software/wifi_manager_plan.md)
+
 *Additional entries will be added as development progresses:*
 - Software architecture choices and implementation patterns
 - Problem-solving approaches and debugging insights

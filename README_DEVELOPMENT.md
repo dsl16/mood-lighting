@@ -4,8 +4,9 @@
 
 **Status**: ✅ Ready for ESP32 development  
 **MicroPython Firmware**: v1.24.1 (stable, downloaded)  
-**Development Tools**: Thonny IDE + esptool.py configured  
+**Development Tools**: VS Code + PyMakr (primary), Thonny IDE (backup) + esptool.py configured  
 **Virtual Environment**: Isolated project dependencies  
+**WiFi Manager**: micropython-esp-wifi-manager via PyPI (auto-reconnect, web interface)  
 
 ## Quick Start Commands
 
@@ -45,6 +46,17 @@ esptool.py --port /dev/tty.usbserial-* erase_flash
 esptool.py --port /dev/tty.usbserial-* --baud 460800 write_flash -z 0x1000 firmware/esp32-generic-v1.24.1.bin
 
 # Note: Replace /dev/tty.usbserial-* with actual port (will be shown when ESP32 connects)
+```
+
+### Install WiFi Manager Library (After MicroPython Flash)
+```bash
+# Connect to ESP32 via PyMakr or Thonny REPL, then run:
+import upip
+upip.install('micropython-esp-wifi-manager')
+
+# Verify installation
+from wifi_manager import WiFiManager
+print("WiFi Manager installed successfully!")
 ```
 
 ### Connect to ESP32 Serial Console
