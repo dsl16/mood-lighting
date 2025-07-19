@@ -17,8 +17,13 @@ This memory bank will grow organically as features are implemented, capturing de
 
 ## Development Notes
 
-*This section will be populated as development progresses with:*
-- Hardware setup decisions and component selections
+### Hardware Component Selection ✅
+- **ESP32 Board**: DOIT ESP32 DevKit V1 selected for MicroPython compatibility
+- **Components**: WayinTop starter kit + Gikfun 12mm tactile buttons
+- **Budget**: $48 total, within $50 target
+- **Details**: [Hardware Component Selection](hardware/component_selection.md)
+
+*Additional entries will be added as development progresses:*
 - Software architecture choices and implementation patterns
 - Problem-solving approaches and debugging insights
 - Performance optimizations and testing strategies
