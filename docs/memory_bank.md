@@ -58,6 +58,13 @@ This memory bank will grow organically as features are implemented, capturing de
 - **Development Quality**: pyproject.toml, black/flake8 configuration, comprehensive fixtures
 - **Test Coverage**: Main controller logic, LIFX API, hardware mocking, error scenarios
 
+### Development Workflow Guide ✅
+- **Virtual Environment**: Always use existing venv/, never install packages globally
+- **IDE Configuration**: VS Code + PyMakr primary, Thonny backup for ESP32 debugging
+- **Platform Detection**: Conditional imports for desktop Python vs MicroPython compatibility
+- **Tool Prerequisites**: esptool.py, pytest, requests verification before ESP32 work
+- **Details**: [Development Workflow Guide](software/development_workflow_guide.md)
+
 *Additional entries will be added as development progresses:*
 - Hardware assembly and wiring implementation
 - Performance optimization and timing validation  

@@ -741,3 +741,68 @@ Visual device management
 - Advanced scheduling and automation
 - Integration with other smart home devices
 - Professional enclosure design and 3D printing
+
+# Development Workflow - Essential Instructions
+
+## CRITICAL: Development Environment Setup
+
+### **Always Use Virtual Environment**
+```bash
+# REQUIRED: Check for and use existing virtual environment
+source venv/bin/activate
+
+# Verify correct environment before any Python work
+which python3  # Should show path with /venv/
+pip list       # Should show project dependencies
+```
+
+**NEVER install packages globally** - this project has a configured venv with all dependencies.
+
+### **IDE Configuration**
+- **Primary**: VS Code + PyMakr extension for ESP32 development
+- **Backup**: Thonny IDE for complex ESP32 debugging only
+- **Always**: Open project from root directory: `code .`
+
+### **Platform Detection for Imports**
+The project uses conditional imports for desktop vs ESP32 compatibility:
+```python
+try:
+    import urequests as requests  # MicroPython on ESP32
+    import ujson as json
+except ImportError:
+    import requests              # Desktop Python
+    import json
+```
+
+### **Pre-Work Tool Verification**
+```bash
+# Always verify before ESP32 work:
+source venv/bin/activate
+esptool.py version              # Should show v4.9.0+
+pytest --version                # Should work
+python3 -c "from src.lighting.lifx_api import LIFXController"  # Should not error
+```
+
+### **Testing Workflow**
+```bash
+# Unit tests (fast, no external dependencies)
+pytest tests/test_main.py -v
+
+# Integration tests (requires LIFX API)
+python3 tests/test_lighting/test_lifx_api.py
+
+# Before ESP32 deployment - run both desktop tests
+```
+
+### **File Structure for Imports**
+- **Desktop testing**: `from src.lighting.lifx_api import LIFXController`
+- **ESP32 deployment**: Upload src/ contents, then `from lighting.lifx_api import LIFXController`
+- **Main application**: `src/main.py` → upload to `/main.py` on ESP32
+
+### **Common Development Cycle**
+1. Activate venv: `source venv/bin/activate`
+2. Test on desktop: `python3 tests/test_lighting/test_lifx_api.py`
+3. Deploy to ESP32: Use VS Code + PyMakr to upload files
+4. Debug via serial console
+
+**Key Principle**: Always test logic on desktop before ESP32 deployment.
