@@ -490,13 +490,13 @@ What might need to change as project evolves
 **Approach**: Environment variables with Git exclusion (industry standard for development projects)
 **Implementation**: 
 ```python
-# secrets.py (git-ignored)
+# project_secrets.py (git-ignored)
 WIFI_SSID = "your_network"
 WIFI_PASSWORD = "your_password" 
 LIFX_TOKEN = "your_api_token"
 
 # main.py  
-from secrets import WIFI_SSID, WIFI_PASSWORD, LIFX_TOKEN
+from project_secrets import WIFI_SSID, WIFI_PASSWORD, LIFX_TOKEN
 ```
 
 **Protection Measures**:

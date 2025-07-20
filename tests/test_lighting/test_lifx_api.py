@@ -6,6 +6,7 @@ Uses standard Python libraries and comprehensive testing features
 
 import sys
 import time
+sys.path.append('../../src')  # Add src to path from tests/test_lighting/
 from lighting.lifx_api import LIFXController, toggle_light, get_all_lights, LIFXAPIError
 
 def test_lifx_api():

@@ -18,7 +18,7 @@ except ImportError:
     import json
 
 import time
-from secrets import LIFX_TOKEN
+from project_secrets import LIFX_TOKEN
 
 
 class LIFXAPIError(Exception):

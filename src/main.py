@@ -36,7 +36,7 @@ except ImportError:
     MICROPYTHON = False
 
 # Import credentials
-from secrets import WIFI_SSID, WIFI_PASSWORD, LIFX_TOKEN
+from project_secrets import WIFI_SSID, WIFI_PASSWORD, LIFX_TOKEN
 
 # Hardware pin assignments
 BUTTON_PIN = 4          # Button input with pull-up
