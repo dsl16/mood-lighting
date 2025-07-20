@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Unit tests for LIFX API module using pytest framework
+Desktop Python test for LIFX API module  
+Uses standard Python libraries and comprehensive testing features
 """
 
-import pytest
+import sys
 import time
-from unittest.mock import Mock, patch, MagicMock
 from lighting.lifx_api import LIFXController, toggle_light, get_all_lights, LIFXAPIError
 
 def test_lifx_api():
