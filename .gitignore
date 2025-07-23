@@ -1,24 +1,16 @@
-# Secrets and credentials
-secrets.py
-*.env
-.env*
+# Arduino secrets (NEVER commit credentials)
+arduino/*/secrets.h
 
-# MicroPython specific
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-*.so
-.micropython_cache/
-
-# ESP32 specific
+# Arduino build files
 build/
 *.bin
 *.elf
 *.map
-boot.py
-webrepl_cfg.py
+*.hex
+*.lst
+*.sym
+*.o
+*.d
 
 # IDE and editor files
 .vscode/
@@ -28,18 +20,6 @@ webrepl_cfg.py
 *~
 .DS_Store
 Thumbs.db
-
-# Python virtual environments
-venv/
-env/
-ENV/
-.venv/
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-.tox/
 
 # Documentation builds
 docs/_build/
@@ -52,35 +32,14 @@ site/
 *.bak
 *.backup
 
-# Configuration backups
-config.json.bak
-config.json.backup
-
-# Hardware-specific files
-*.hex
-*.lst
-*.sym
-*.o
-*.d
-
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+# Any Python environments (if needed for docs/testing)
+venv/
+env/
+ENV/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
 
 # Network debugging
 network_debug.log
