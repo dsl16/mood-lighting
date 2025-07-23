@@ -1,1 +1,0 @@
-# test_lighting package initialization
